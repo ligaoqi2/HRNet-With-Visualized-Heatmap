@@ -1,11 +1,19 @@
-# HRNet with Visualized Heatmap
+# HRNet with Visualized Heatmap and Intermediate results
 
-### Visualized Result
+## Result
+
+### 1. Visualized Heatmap
 
 <img src="figure/heatmap.png">
 
+### 2. Intermediate Result Examples
+
+<img src="figure/IntermediateResults1.png">
+<img src="figure/IntermediateResults2.png">
+<img src="figure/IntermediateResults3.png">
+
 ## Introduction
-This is a repo generating HRNet visualized heatmap from a single video.
+This is a repo generating HRNet visualized heatmap and intermediate result from a single video.
 
 ## Environment
 The code is developed using python 3.9 on Ubuntu 18.04 and using an NVIDIA GeForce 3060 GPU.
@@ -67,16 +75,22 @@ The code is developed using python 3.9 on Ubuntu 18.04 and using an NVIDIA GeFor
 
 1. Configure the python run script and the runtime parameters in [Pycharm](https://www.jetbrains.com/pycharm/)
 
+2. For the Intermediate result, you only need to change the runtime script to demo_hook.py
+
 
 <img src="figure/configure.png">
 
 
 2. Get the result
 ```
-${ROOT}/output/heatmap.jpg
+1. Heatmap  -->  ${ROOT}/output/heatmap.jpg
+
+2. Intermediate result  --> please add plt.savefig() function to ${ROOT}/demo/demo_hook.py line 254.
 ```
 
-### Customize the results you want
+## Customize the results you want
+### 1. Heatmap
+
 Modify the code in ${ROOT}/lib/core/inference.py from line 71 to line 77
 
 ```
@@ -93,6 +107,15 @@ The shape of batch_heatmaps is like (1, 17, 96, 72) in single person scenario
 ```
 
 <img src="figure/code.png">
+
+### 2. Intermediate result
+1. Modify the code in ${ROOT}/demo/demo_hook.py from line 243 to line 254 to customize the visualized picture
+
+<img src="figure/IntermediateResultConfig1.png">
+
+2. Modify the code in ${ROOT}/demo/demo_hook.py from line 307 to line 313 to customize the middle layer you want to view
+
+<img src="figure/IntermediateResultConfig2.png">
 
 
 ### Acknowledgments
